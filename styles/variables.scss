@@ -1,0 +1,99 @@
+$grey1: #f9fafa;
+$grey2: #f4f5f6;
+$grey3: #f6f6f8;
+$grey4: #ededf0;
+$grey5: #bdbdbd;
+$grey6: #838691;
+$grey7: #808893;
+$grey8: #50565e;
+$grey9: #1c1e2d33;
+$grey10: #1c1e2d66;
+$grey11: #00000073;
+$grey12: #000000a6;
+$grey13: #141414d9;
+$blue: #006fff;
+$dark-blue: #0059cc;
+
+$header-height: 50px;
+$border-radius: 4px;
+
+$xsBreakpoint: 576px;
+$smBreakpoint: 768px;
+$mdBreakpoint: 1024px;
+$lgBreakpoint: 1290px;
+$xlBreakpoint: 1440px;
+
+@mixin button {
+  @include focus-hover;
+  border-radius: $border-radius;
+  padding: 6px;
+}
+
+@mixin shadow-button {
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  box-shadow: 0px 16px 32px 0px $grey9;
+  color: $grey7;
+  font-size: 14px;
+  padding: 6px;
+
+  &:hover {
+    box-shadow: 0px 10px 20px 0px $grey10;
+  }
+
+  &:focus {
+    @include focus;
+  }
+}
+
+@mixin font1 {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+@mixin hover {
+  &:hover {
+    background-color: $grey1;
+  }
+}
+
+@mixin focus {
+  &:focus {
+    outline: 1px solid $blue;
+  }
+}
+
+@mixin focus-hover {
+  @include hover;
+  @include focus;
+}
+
+@mixin xs-breakpoint {
+  @media only screen and (max-width: $xsBreakpoint) {
+    @content;
+  }
+}
+
+@mixin sm-breakpoint {
+  @media only screen and (min-width: $smBreakpoint) {
+    @content;
+  }
+}
+
+@mixin md-breakpoint {
+  @media only screen and (min-width: $mdBreakpoint) {
+    @content;
+  }
+}
+
+@mixin lg-breakpoint {
+  @media only screen and (min-width: $lgBreakpoint) {
+    @content;
+  }
+}
+
+@mixin xl-breakpoint {
+  @media only screen and (min-width: $xlBreakpoint) {
+    @content;
+  }
+}

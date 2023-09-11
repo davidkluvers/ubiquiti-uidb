@@ -1,0 +1,89 @@
+@import '../styles/variables.scss';
+
+.detailView {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.detailViewHeader {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.headerButton {
+  @include shadow-button;
+}
+
+.backButton {
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="6" height="12" fill="none"%3E%3Cpath fill="%23838691" d="M5.5 12a.501.501 0 0 1-.364-.157L.287 6.701A.994.994 0 0 1 0 6c0-.264.102-.513.287-.701L5.136.157a.5.5 0 0 1 .728.686L1 6l.01.01 4.854 5.146A.5.5 0 0 1 5.5 12Z"%3E%3C/path%3E%3C/svg%3E')
+    no-repeat 11px;
+  padding-left: 25px;
+}
+
+.arrowButtons {
+  display: flex;
+}
+
+.arrowButton {
+  align-items: center;
+  display: flex;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+
+  &:first-child {
+    margin-right: 4px;
+  }
+}
+
+.detailViewContent {
+  display: flex;
+  gap: 32px;
+  max-width: 768px;
+  width: 100%;
+}
+
+.imageWrapper {
+  height: 292px;
+  position: relative;
+  width: 292px;
+
+  .image {
+    height: 80%;
+    left: 0;
+    object-fit: contain;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+  }
+}
+
+.deviceDetails {
+  flex: 1;
+}
+
+.jsonToggleButton {
+  @include button;
+  color: $blue;
+}
+
+.jsonBlock {
+  background: #000;
+  border-radius: $border-radius;
+  color: #fff;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 25px 10px;
+  width: 100%;
+
+  &:hover {
+    color: $dark-blue;
+  }
+}

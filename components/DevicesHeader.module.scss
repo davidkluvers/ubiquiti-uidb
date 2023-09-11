@@ -1,0 +1,217 @@
+@import '../styles/variables.scss';
+
+.devicesHeader {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 32px;
+  z-index: 10;
+}
+
+.deviceSearch {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.deviceSearchInput {
+  background: $grey3
+    url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.8529 13.1465L11.0059 10.3025C11.9369 9.21149 12.4999 7.79749 12.4999 6.25049C12.4999 2.79849 9.70188 0.000488281 6.24988 0.000488281C2.79788 0.000488281 -0.00012207 2.79849 -0.00012207 6.25049C-0.00012207 9.70249 2.79788 12.5005 6.24988 12.5005C7.79488 12.5005 9.20788 11.9385 10.2989 11.0095L13.1469 13.8535C13.2449 13.9515 13.3719 13.9995 13.4999 13.9995C13.6279 13.9995 13.7559 13.9505 13.8539 13.8525C14.0489 13.6585 14.0489 13.3415 13.8529 13.1465ZM0.999878 6.25049C0.999878 3.35549 3.35488 1.00049 6.24988 1.00049C9.14488 1.00049 11.4999 3.35549 11.4999 6.25049C11.4999 9.14549 9.14488 11.5005 6.24988 11.5005C3.35488 11.5005 0.999878 9.14549 0.999878 6.25049Z' fill='%23838691'/%3E%3C/svg%3E%0A")
+    no-repeat 11px center;
+  border: 0;
+  border-radius: $border-radius;
+  color: $grey6;
+  margin-right: 16px;
+  padding: 6px 8px 6px 35px;
+  width: 350px;
+  z-index: 4;
+
+  &::placeholder {
+    color: $grey6;
+  }
+
+  &:hover {
+    background-color: $grey4;
+  }
+
+  &:focus {
+    outline: 1px solid $blue;
+  }
+}
+
+.autocompleteDropdown {
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0px 16px 32px 0px $grey9;
+  margin-top: 1px;
+  max-height: 400px;
+  overflow: auto;
+  padding: 8px 1px;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 350px;
+  z-index: 4;
+}
+
+.autocompleteScrim {
+  background: transparent;
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 3;
+}
+
+.autocompleteDropdownList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.autocompleteDropdownListItem {
+  color: $grey8;
+}
+
+.autocompleteDropdownListButton {
+  @include button;
+  border-radius: $border-radius;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  width: 100%;
+
+  span {
+    width: 45%;
+  }
+
+  span:nth-child(2) {
+    text-align: right;
+  }
+}
+
+.deviceCount {
+  color: $grey5;
+  font-size: 12px;
+}
+
+.headerControls {
+  align-items: center;
+  display: flex;
+}
+
+.iconButton {
+  @include button;
+  align-items: center;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  margin-right: 1px;
+  width: 32px;
+}
+
+.iconButtonActive {
+  background-color: $grey1;
+
+  svg {
+    path {
+      &.fillClass {
+        fill: $blue;
+      }
+    }
+  }
+}
+
+.filtersContainer {
+  position: relative;
+}
+
+.filterButton {
+  @include button;
+  color: $grey11;
+  font-size: 14px;
+
+  .filterButtonActive {
+    background-color: $grey1;
+  }
+}
+
+.filterTitle {
+  font-weight: bold;
+  margin: 0 0 12px 0;
+}
+
+.filters {
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: 0px 16px 32px 0px $grey9;
+  margin-top: 1px;
+  padding: 16px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 10;
+}
+
+.filterList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filterListItem {
+  align-items: center;
+  color: $grey12;
+  display: flex;
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.filterListInput {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  outline: none;
+  content: none;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+
+  &:after {
+    background: transparent;
+    border: 1px solid $grey7;
+    border-radius: $border-radius;
+    content: '';
+    color: transparent;
+    display: block;
+    font-size: 15px;
+    height: 16px;
+    margin-right: 7px;
+    width: 16px;
+  }
+
+  &:hover:after {
+    border-color: $blue;
+  }
+
+  &:checked:after {
+    background: $blue
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" fill="none"><path fill="%23fff" d="M2.938 4.575 1.171 2.808a.5.5 0 0 0-.708.707L1.948 5 2 5.05l.232.232a1 1 0 0 0 1.414 0l3.89-3.89a.5.5 0 0 0-.708-.707l-3.89 3.89Z"/></svg>')
+      no-repeat;
+    background-size: 10px;
+    background-position: center;
+  }
+}
+
+.filterLisLabel {
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.highlight {
+  font-weight: bold;
+}

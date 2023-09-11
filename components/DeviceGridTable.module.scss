@@ -1,0 +1,203 @@
+@import '../styles/variables.scss';
+
+.deviceList {
+  list-style: none;
+  margin: 0;
+  padding: 1px 0 0;
+  // overflow: auto;
+}
+
+.deviceListGrid {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 32px;
+
+  @include sm-breakpoint {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @include md-breakpoint {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @include lg-breakpoint {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.deviceTable {
+  border-collapse: inherit;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.deviceTableHead {
+  background: #fff;
+  position: sticky;
+  top: 0;
+}
+
+.tableHeadRow th,
+.tableBodyRow td {
+  width: 50%;
+}
+
+.tableHeadRow th {
+  border-bottom: 1px solid $grey4;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.tableHeadRow {
+  margin-bottom: 1px;
+}
+
+.tableBodyRowSpacer {
+  height: 1px;
+}
+
+.tableBodyRow {
+  @include focus-hover;
+  cursor: pointer;
+}
+
+.tableBodyRowContent {
+  align-items: center;
+  display: flex;
+
+  img {
+    margin-right: 6px;
+  }
+}
+
+.tableBodyRow td {
+  border-bottom: 1px solid $grey4;
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+
+.deviceItem {
+  background-color: transparent;
+  border-color: $grey4;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.deviceGridItem {
+  border-radius: $border-radius;
+  border-width: 1px;
+  display: flex;
+  flex-flow: column;
+
+  &:hover {
+    &:after {
+      background-color: $grey1;
+      content: '';
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .imageWrapper {
+      background-color: $grey2;
+    }
+  }
+
+  &:focus {
+    @include focus;
+  }
+
+  .imageWrapper {
+    background-color: $grey1;
+    display: block;
+    height: 10vw;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .image {
+    height: 80%;
+    left: 0;
+    object-fit: contain;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+  }
+
+  .lineName {
+    background: #fff;
+    border-radius: $border-radius;
+    color: $blue;
+    font-size: 12px;
+    padding: 5px 4px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+  }
+
+  .content {
+    display: block;
+    padding: 8px;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .deviceName {
+    @include font1;
+    color: $grey13;
+    margin: 0 0 28px 0;
+  }
+
+  .contentCode {
+    color: $grey11;
+    font-size: 12px;
+  }
+}
+
+.deviceListItem {
+  @include focus-hover;
+  align-items: center;
+  color: $grey12;
+  border-bottom-width: 1px;
+  display: flex;
+  flex-flow: row;
+  padding: 6px 0;
+
+  .imageWrapper {
+    align-items: center;
+    display: flex;
+    flex: 50%;
+    padding: 6px 8px;
+  }
+
+  .image {
+    height: 20px;
+    margin-right: 8px;
+    width: 20px;
+  }
+
+  .content {
+    flex: 50%;
+  }
+
+  .lineName {
+    font-size: 14px;
+  }
+
+  .deviceName {
+    @include font1;
+    color: $grey11;
+    margin: 0;
+  }
+}

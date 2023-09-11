@@ -1,0 +1,15 @@
+@import '../styles/variables.scss';
+
+.devicesContainer {
+  display: flex;
+  flex-flow: column;
+  height: calc(max(100vh - $header-height));
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.devicesScrollArea {
+  overflow: auto;
+  padding: 0 32px;
+}
