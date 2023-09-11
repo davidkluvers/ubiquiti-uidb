@@ -1,90 +1,64 @@
-# Next + Netlify Starter
+# Ubiquiti FE Test Assignment
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
+Imagine that you are a developer at Ubiquiti, Inc. and your product manager has asked you to help another team - to kick-start a project and put it in good shape for that other team to take over.
 
-This is a [Next.js](https://nextjs.org/) v12 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and set up to be instantly deployed to [Netlify](https://url.netlify.com/SyTBPVamO)!
+Your product manager has shared the context: multiple teams need a shared internal productivity tool to help developers, designers, PM:s and other roles to discover, verify, share and align on insights about Ubiquit’s products and their images to visualize the product database UIDB which is used by many systems.
 
-This project is a very minimal starter that includes 2 sample components, a global stylesheet, a `netlify.toml` for deployment, and a `jsconfig.json` for setting up absolute imports and aliases. With Netlify, you'll have access to features like Preview Mode, server-side rendering/incremental static regeneration via Netlify Functions, and internationalized routing on deploy automatically.
+The designers have defined the UX and UI for all the features that the teams were asking for get the Figma file here. But they have not negotiated the design with you. Feel free to alter things if you have good reasons.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
+Currently these are the key fields in UIDB:
 
-(If you click this button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify)
+- id - primary key
+- line - what you use for Filters
+- product.name - human readable name
+- shortnames - multiple lookup keys as used by various systems and their versions
+- icon.id - used for image urls
+- icon.resolutions - ordered list of available image sizes (width and height)
+- images should be square
+- notice that a lot of devices have a more limited set of sizes than others
+
+Image urls can be built using
+`https://static.ui.com/fingerprint/ui/icons/${icon.id}_${size.width}x${size.height}.png`
+
+For an example see: https://static.ui.com/fingerprint/ui/icons/1a431afe-91c6-400f-bd34-c2eeffec263d_257x257.png
+
+The UIDB team is not guaranteeing the schema won't change tomorrow. Your product manager asks you to expect the unexpected and fail gracefully.
+
+React and Typescript are requirements, but the other teams will adopt potential additional choices.
+
+You don’t know the other team and have no ability to talk to them. Whatever you hand over has to be in the git repository.
+
+Product managers and designers will not be able to run your code just to see what you have built. Deploy your latest version somewhere online.
+
+You have only NN hours. Make the biggest impact you can!
+
+Practicalities
+If you have any questions about the assignment or the hand-off process please reach out to simon.perstorper@ui.com.
 
 ## Table of Contents:
 
 - [Getting Started](#getting-started)
+
 - [Installation options](#installation-options)
-- [Testing](#testing)
-  - [Included Default Testing](#included-default-testing)
-  - [Removing Renovate](#removing-renovate)
-  - [Removing Cypress](#removing-cypress)
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+
 npm run dev
-# or
-yarn dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
 ### Installation options
 
-**Option one:** One-click deploy
+1. Clone this repo: `git clone https://github.com/davidkluvers/ubiquiti-uidb.git`
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
-
-**Option two:** Manual clone
-
-1. Clone this repo: `git clone https://github.com/netlify-templates/next-netlify-starter.git`
 2. Navigate to the directory and run `npm install`
+
 3. Run `npm run dev`
+
 4. Make your changes
-5. Connect to [Netlify](https://url.netlify.com/Bk4UicocL) manually (the `netlify.toml` file is the one you'll need to make sure stays intact to make sure the export is done and pointed to the right stuff)
-
-## Testing
-
-### Included Default Testing
-
-We’ve included some tooling that helps us maintain these templates. This template currently uses:
-
-- [Renovate](https://www.mend.io/free-developer-tools/renovate/) - to regularly update our dependencies
-- [Cypress](https://www.cypress.io/) - to run tests against how the template runs in the browser
-- [Cypress Netlify Build Plugin](https://github.com/cypress-io/netlify-plugin-cypress) - to run our tests during our build process
-
-If your team is not interested in this tooling, you can remove them with ease!
-
-### Removing Renovate
-
-In order to keep our project up-to-date with dependencies we use a tool called [Renovate](https://github.com/marketplace/renovate). If you’re not interested in this tooling, delete the `renovate.json` file and commit that onto your main branch.
-
-### Removing Cypress
-
-For our testing, we use [Cypress](https://www.cypress.io/) for end-to-end testing. This makes sure that we can validate that our templates are rendering and displaying as we’d expect. By default, we have Cypress not generate deploy links if our tests don’t pass. If you’d like to keep Cypress and still generate the deploy links, go into your `netlify.toml` and delete the plugin configuration lines:
-
-```diff
-[[plugins]]
-  package = "netlify-plugin-cypress"
--  [plugins.inputs.postBuild]
--    enable = true
--
--  [plugins.inputs]
--    enable = false 
-```
-
-If you’d like to remove the `netlify-plugin-cypress` build plugin entirely, you’d need to delete the entire block above instead. And then make sure sure to remove the package from the dependencies using:
-
-```bash
-npm uninstall -D netlify-plugin-cypress
-```
-
-And lastly if you’d like to remove Cypress entirely, delete the entire `cypress` folder and the `cypress.config.ts` file. Then remove the dependency using:
-
-```bash
-npm uninstall -S cypress
-```
